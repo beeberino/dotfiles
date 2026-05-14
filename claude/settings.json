@@ -1,24 +1,19 @@
 {
   "enabledPlugins": {
-    "hiive@hiive-tools": true,
     "skill-creator@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
     "playwright@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "hiive-tools": {
-      "source": {
-        "source": "github",
-        "repo": "hiivemarkets/claude-plugins"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "theme": "dark",
   "mcpServers": {
     "logseq": {
       "command": "npx",
-      "args": ["-y", "logseq-mcp"],
+      "args": [
+        "-y",
+        "logseq-mcp"
+      ],
       "env": {
         "LOGSEQ_API_TOKEN": "12345"
       }

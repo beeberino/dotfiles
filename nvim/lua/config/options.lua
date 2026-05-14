@@ -5,3 +5,5 @@ vim.opt.clipboard = "unnamedplus"
 
 -- mise shims aren't on PATH in non-login shells; add them so node and other mise tools work
 vim.env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. vim.env.PATH
+
+vim.g.python3_host_prog = vim.fn.expand("~/.local/share/mise/installs/python/3.14/bin/python")
