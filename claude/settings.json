@@ -1,0 +1,60 @@
+{
+  "enabledPlugins": {
+    "hiive@hiive-tools": true,
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "hiive-tools": {
+      "source": {
+        "source": "github",
+        "repo": "hiivemarkets/claude-plugins"
+      }
+    }
+  },
+  "theme": "dark",
+  "mcpServers": {
+    "logseq": {
+      "command": "npx",
+      "args": ["-y", "logseq-mcp"],
+      "env": {
+        "LOGSEQ_API_TOKEN": "12345"
+      }
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f \"$CLAUDE_PROJECT_DIR/.claude/state/dag.json\" && jq -r '.nodes | to_entries | sort_by(.value.status) | .[] | \"\\(.value.status)\\t\\(.key)\\t\\(.value.title)\"' \"$CLAUDE_PROJECT_DIR/.claude/state/dag.json\" || true"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/scripts/dag-log.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "^/work\\b",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f \"$CLAUDE_PROJECT_DIR/.claude/state/dag.json\" && jq -r '[.nodes[]|select(.status==\"ready\")]|length as $r | [.nodes[]|select(.status==\"in_progress\")]|length as $p | [.nodes[]|select(.status==\"blocked\")]|length as $b | [.nodes[]|select(.status==\"done\")]|length as $d | [.nodes[]|select(.status==\"failed\")]|length as $f | \"DAG: ready=\\($r) in_flight=\\($p) blocked=\\($b) done=\\($d) failed=\\($f)\"' \"$CLAUDE_PROJECT_DIR/.claude/state/dag.json\" || true"
+          }
+        ]
+      }
+    ]
+  }
+}

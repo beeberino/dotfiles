@@ -92,23 +92,29 @@ setopt hist_save_no_dups
 setopt hist_verify
 setopt inc_append_history
 setopt no_hist_allow_clobber
-setopt no_hist_beep
+# setopt no_hist_beep
 setopt share_history
 
 # command history autocomplete
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+# autoload -U up-line-or-beginning-search
+# autoload -U down-line-or-beginning-search
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+# bindkey "^[[A" up-line-or-beginning-search # Up
+# bindkey "^[[B" down-line-or-beginning-search # Down
 
 #enable colored output from ls, etc
 export CLICOLOR=1
 export ZSH_THEME_GIT_PROMPT_NOCACHE=1
 
 source $HOME/.zshrc.local
-source $HOME/.zsh/prompt.sh
+source ~/.dotfiles/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-eval $(thefuck --alias)
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+eval "$(starship init zsh)"
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+source /Users/thomaswatts/.dotfiles/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

@@ -1,0 +1,1 @@
+/Users/thomaswatts/dotfiles/zsh/configs/post/completion.zsh
