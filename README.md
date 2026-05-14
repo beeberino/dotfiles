@@ -12,4 +12,6 @@
 9. `git clone https://github.com/powerline/fonts.git`
 10. `cd fonts && sh ./install.sh`
 11. install font from Finder and select it as Non-Ascii font in Iterm Preferences->Profiles->Text
-12. install any other necessary packages
+12. `brew install thefuck`
+13. `rake install`
+14. install any other necessary packages
