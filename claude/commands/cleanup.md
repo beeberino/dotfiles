@@ -12,7 +12,7 @@ Resolve `$STATE` the same way `/work` does — `--state-dir` arg, `$CLAUDE_DAG_S
 Files this command touches:
 
 - **Read**: `$STATE/prd.md`, `$STATE/dag.json`, `$STATE/dag-events.jsonl`, `$STATE/patches/applied/**/*.json`, `$STATE/<repo-basename>/learnings.md`
-- **Write**: One Markdown file under `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vaulty/Engineering/Sessions/`
+- **Write**: One Markdown file under `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Devault/Engineering/Sessions/`
 - **Delete (only if cleanup proceeds)**: all read state files; the `patches/applied/` tree; the per-repo learnings file. The empty `$STATE/patches/` directory is **kept** for the next cycle.
 
 ## Step 1 — Refuse if pending
@@ -44,7 +44,7 @@ Compute `<repo-basename>` from `dag.json:.repo_root` via `basename`.
 
 Filename: `<slug>-YYYY-MM-DD.md` where `<slug>` = the PRD's H1 title, lowercased, alphanumerics + hyphens only, truncated to 50 chars. Use `date +%Y-%m-%d` for the date.
 
-Path: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vaulty/Engineering/Sessions/<slug>-YYYY-MM-DD.md`
+Path: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Devault/Engineering/Sessions/<slug>-YYYY-MM-DD.md`
 
 If a file already exists at that path, append `-2`, `-3`, etc.
 
@@ -141,7 +141,7 @@ Wait for user confirmation. Do not assume yes.
 
 ## Step 5 — Write the Obsidian note
 
-Use the Write tool. If the parent directory `Vaulty/Engineering/Sessions/` doesn't exist, create it via Bash `mkdir -p` first.
+Use the Write tool. If the parent directory `Devault/Engineering/Sessions/` doesn't exist, create it via Bash `mkdir -p` first.
 
 If Write fails (iCloud permission errors are possible), surface the error and STOP — do not proceed to deletion.
 

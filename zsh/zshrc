@@ -53,6 +53,7 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
+alias vi=nvim
 # Aliases
 alias pip='pip3'
 alias d_ds="find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch"
